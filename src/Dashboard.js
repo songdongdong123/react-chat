@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Link, Redirect } from 'react-router-dom'
-import App from './app'
+import App from './App'
 import { logout } from './Auth.redux' 
 import { connect } from 'react-redux'
 import { Button } from 'antd-mobile'
@@ -17,6 +17,8 @@ function Qingbinglian () {
 )
 class Dashboard extends React.Component{
   render () {
+    const macth = this.props.match
+    console.log(macth)
     const redirectToLogin = <Redirect to="/login"></Redirect>
     const app = (
       <div>
@@ -24,18 +26,18 @@ class Dashboard extends React.Component{
         <ul>
           {/* link表明跳转被指定的路由 */}
           <li>
-            <Link to="/dashboard/">一营</Link>
+            <Link to={`${macth.url}`}>一营</Link>
           </li>
           <li>
-            <Link to="/dashboard/erying">二营</Link>
+            <Link to={`${macth.url}/erying`}>二营</Link>
           </li>
           <li>
-            <Link to="/dashboard/qibinglian">骑兵连</Link>
+            <Link to={`${macth.url}/qibinglian`}>骑兵连</Link>
           </li>
         </ul>
-        <Route path="/dashboard/" exact component={App}></Route>
-        <Route path="/dashboard/erying" component={Erying}></Route>
-        <Route path="/dashboard/qibinglian" component={Qingbinglian}></Route>
+        <Route path={`${macth.url}`} exact component={App}></Route>
+        <Route path={`${macth.url}/erying`} component={Erying}></Route>
+        <Route path={`${macth.url}/qibinglian`} component={Qingbinglian}></Route>
       </div>
     )
     return (
