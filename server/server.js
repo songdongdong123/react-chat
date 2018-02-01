@@ -13,16 +13,16 @@ const User = mongoose.model('user', new mongoose.Schema({
 }))
 // 通过模型来操作数据库表
 // 新增了一条数据
-// User.create({
-//   user: 'Ethan',
-//   age: 14
-// }, function(err, doc) {
-//   if (!err) {
-//     console.log(doc)
-//   } else {
-//     console.log(err)
-//   }
-// })
+User.create({
+  user: '小黑',
+  age: 14
+}, function(err, doc) {
+  if (!err) {
+    console.log(doc)
+  } else {
+    console.log(err)
+  }
+})
 // // 根据过滤器的内容，删除对应的数据
 // User.remove({age: 14}, function(err, doc) {
 //   console.log(doc)
