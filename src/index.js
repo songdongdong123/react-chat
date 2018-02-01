@@ -10,6 +10,7 @@ import thunk from 'redux-thunk'
 import reducers from './reducer'
 import Login from './container/login/login'
 import Register from './container/register/register'
+import AuthRoute from './component/authroute/authroute'
 import './config'
 
 // 新建一个store
@@ -23,11 +24,12 @@ ReactDom.render((
   // Provider的唯一功能就是传入store对象。只用一次
   <Provider store = {store}>
     <BrowserRouter>
-      <Switch>
+      <div>
+        <AuthRoute></AuthRoute>
         <Route path="/login" component={Login}></Route>
         <Route path="/register" component={Register}></Route>
-        <Redirect to="/login"></Redirect>
-      </Switch>
+        {/* <Redirect to="/login"></Redirect> */}
+      </div>
     </BrowserRouter>
   </Provider>
 ), document.getElementById('root'))
