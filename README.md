@@ -11,3 +11,5 @@ git pull origin dev
 cnpm install
 ##启动项目
 npm start
+![](./static/login.png)
+![](./static/register.png)
