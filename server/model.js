@@ -1,10 +1,12 @@
+// 引入mongoose,并且链接数据库
 const mongoose = require('mongoose')
-const DB_URL = 'mongodb://127.0.0.1:27017/ethan-chat'
+const DB_URL = 'mongodb://127.0.0.1:27017/ethan'
 mongoose.connect(DB_URL)
 mongoose.connection.on('connected', function() {
   console.log('mongo connect success')
 })
 
+// 定义数据模型字段
 const models = {
   user: {
     'user': {'type': String, 'require': true},
@@ -25,7 +27,7 @@ const models = {
 }
 
 for (let m in models) {
-  // 遍历models，根据key，来批量生成不同的模型
+  // 遍历models，根据key，来批量生成不同的数据模型
   mongoose.model(m, new mongoose.Schema(models[m]))
 }
 

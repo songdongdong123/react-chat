@@ -26,7 +26,7 @@ class Register extends React.Component{
     })
   }
   handleResgister () {
-    // this.props.regisger(this.state)
+    this.props.regisger(this.state)
     console.log(this.state)
   }
   render () {
