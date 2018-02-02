@@ -10,5 +10,4 @@
 >cnpm install
 ##启动项目
 >npm start
-<img src="static/img/login.png" alt="">
-<img src="static/img/register.png" alt="">
+<img src="static/img/login.png" alt=""><img src="static/img/register.png" alt="">
