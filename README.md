@@ -11,5 +11,5 @@ git pull origin dev
 cnpm install
 ##启动项目
 npm start
-<img src="./static/login.png" alt=""/>
-<img src="./static/register.png" alt=""/>
+<img src="https://github.com/songdongdong123/react-app/static/img/register.png" alt=""/>
+<img src="https://github.com/songdongdong123/react-app/static/img/login.png" alt=""/>
