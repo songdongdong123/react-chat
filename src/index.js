@@ -11,6 +11,7 @@ import reducers from './reducer'
 import Login from './container/login/login'
 import Register from './container/register/register'
 import AuthRoute from './component/authroute/authroute'
+import BossInfo from './container/bossinfo/bossinfo'
 import './config'
 
 // 新建一个store
@@ -26,9 +27,12 @@ ReactDom.render((
     <BrowserRouter>
       <div>
         <AuthRoute></AuthRoute>
-        <Route path="/login" component={Login}></Route>
-        <Route path="/register" component={Register}></Route>
-        {/* <Redirect to="/login"></Redirect> */}
+        <Switch>
+          <Route path="/bossinfo" component={BossInfo}></Route>
+          <Route path="/login" component={Login}></Route>
+          <Route path="/register" component={Register}></Route>
+          {/* <Redirect to="/login"></Redirect> */}
+        </Switch>
       </div>
     </BrowserRouter>
   </Provider>

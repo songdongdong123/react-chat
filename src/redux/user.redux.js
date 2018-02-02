@@ -1,9 +1,14 @@
 import axios from 'axios'
+import { getRedirectPath } from '../util'
 // 定义action type
 const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
+const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+const LOAD_DATA = 'LOAD_DATA'
 // 初始化state
 const initState = {
+  // 增加一个跳转地址的属性
+  redirecTo: '',
   isAuth: false,
   user: '',
   pwd: '',
@@ -13,9 +18,17 @@ const initState = {
 // reducer 
 export function user (state = initState, action) {
   // 根据action.type，更改state的值
+  console.log(action.payload)
+  // console.log(action)
   switch (action.type) {
     case REGISTER_SUCCESS:
-      return {...state, msg: '', isAuth: true, ...action.plyload}
+    // getRedirectPath()用来获取注册成功后路由跳转的地址，然后赋值给redirecTo
+      return {...state, msg: '', redirecTo: getRedirectPath(action.payload), isAuth: true, ...action.payload}
+    case LOGIN_SUCCESS:
+      return {...state, msg: '', redirecTo: getRedirectPath(action.payload), isAuth: true, ...action.payload}
+    case LOAD_DATA:
+    // 这里只是为了把查询到的数据放进我们的redux中
+      return {...state, ...action.payload}
     case ERROR_MSG:
       return {...state, isAuth: false, msg: action.msg}
     default:
@@ -29,7 +42,31 @@ function errorMsg (msg) {
 function registerSuccess (data) {
   return {type: REGISTER_SUCCESS, payload: data}
 }
-// 处理异步请求
+function loginSuccess (data) {
+  return {type: LOGIN_SUCCESS, payload: data}
+}
+// action
+export function loadData (userinfo) {
+  return {type: LOAD_DATA, payload: userinfo}
+}
+
+// 登录
+export function login ({user, pwd}) {
+  if (!user || !pwd) {
+    return errorMsg('请输入用户名或密码')
+  }
+  return dispatch => {
+    axios.post('/user/login', {user, pwd}).then(res => {
+      if (res.status === 200 && res.data.code === 0) {
+        dispatch(loginSuccess(res.data.data))
+      } else {
+        dispatch(errorMsg(res.data.msg))
+      }
+    })
+  }
+}
+
+// 处理异步请求(注册)
 export function regisger ({user, pwd, repeatpwd, type}) {
   if (!user || !pwd || !repeatpwd || !type) {
     return errorMsg('用户名密码必须输入')
