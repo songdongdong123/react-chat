@@ -36,7 +36,6 @@ class AuthRoute extends React.Component{
         //  跳转到登录页面
           this.props.history.push('/login')
         }
-        console.log(res.data)
       }
     })
   }

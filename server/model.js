@@ -12,13 +12,13 @@ const models = {
     'user': {'type': String, 'require': true},
     'pwd': {'type': String, 'require': true},
     'type': {'type': String, 'require': true},
-    'avater': {'type': String},
+    'avatar': {'type': String},
     // 个人简介或者职位简介
     'desc': {'type': String},
     // 职位名
     'title': {'type': String},
     // 如果是boos，还有两个字段
-    'conpany': {'type': String},
+    'company': {'type': String},
     'money': {'type': String}
   },
   chat: {

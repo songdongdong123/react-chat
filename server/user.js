@@ -83,6 +83,32 @@ Router.post('/login', function(req, res) {
   })
 })
 
+Router.post('/update',function(req,res){
+	const userid = req.cookies.userid
+	if (!userid) {
+		return json.dumps({code:1})
+	}
+  const body = req.body
+	User.findByIdAndUpdate(userid,body,function(err,doc){
+    const data = Object.assign({},{
+      user:doc.user,
+			type:doc.type
+		},body)
+		return res.json({code:0,data})
+	})
+})
+
+Router.get('/userlist', function(req, res) {
+  const {type} = req.query
+  User.find({type}, function(err, doc) {
+    if (!err) {
+      return res.json({code:0, data:doc})
+    } else {
+      return res.json({code: 1})
+    }
+  })
+})
+
 // 我们自己对原始的MD5进行复杂度调整
 function pwdMd5(pwd) {
   const salt = 'Ethan_is_man_56good#@!45$sss$453%^&9**~~~~``'

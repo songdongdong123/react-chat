@@ -33,15 +33,14 @@ class Login extends React.Component{
     })
   }
   handleLogin () {
-    console.log(0)
     this.props.login(this.state)
-    console.log(this.state)
   }
   render () {
     return (
       <div>
         <Logo></Logo>
-        {/* 在这里使用 this.props.redirecTo获取注册后要跳转的路由地址*/}
+        <p>{this.props.redirecTo}</p>
+        {/* 在这里使用 this.props.redirecTo获取登录后要跳转的路由地址*/}
         {this.props.redirecTo?<Redirect to={this.props.redirecTo}></Redirect>:null}
         <WingBlank>
           <List>

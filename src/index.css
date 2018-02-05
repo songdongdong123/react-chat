@@ -1,0 +1,8 @@
+.am-tab-bar{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+.am-card-header-content img{
+  width:40px;
+}

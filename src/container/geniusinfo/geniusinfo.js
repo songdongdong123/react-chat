@@ -4,21 +4,17 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import {updata} from '../../redux/user.redux'
 import AvatarSelect from '../../component/avatarselect/avatarselect'
-import './bossinfo.css'
 
 @connect(
   state=>state.user,
   {updata}
 )
-class BossInfo extends React.Component{
+class GeniusInfo extends React.Component{
   constructor(props) {
     super(props)
     this.state={
-      desc: '',
-      company: '',
-      money: '',
       title: '',
-      test: ''
+      desc: ''
     }
   }
   handleChange (key,val) {
@@ -32,7 +28,7 @@ class BossInfo extends React.Component{
     return (
       <div>
         {redirect&&path!==redirect?<Redirect to={this.props.redirecTo}></Redirect>:null}
-        <NavBar mode="dark">Boss信息完善页面</NavBar>
+        <NavBar mode="dark">牛人信息完善页面</NavBar>
         <AvatarSelect
           selectAvator={(imageName) => {
             this.setState({
@@ -43,20 +39,10 @@ class BossInfo extends React.Component{
         <InputItem
           onChange={(v)=>this.handleChange('title', v)}
         >
-            招聘职位
-        </InputItem>
-        <InputItem
-          onChange={(v)=>this.handleChange('company', v)}
-        >
-            公司名称
-        </InputItem>
-        <InputItem
-          onChange={(v)=>this.handleChange('money', v)}
-        >
-            职位薪资
+            职位意向
         </InputItem>
         <TextareaItem
-          title="职位要求"
+          title="个人简介"
           rows={3}
           autoHeight
           onChange={(v)=>this.handleChange('desc', v)}
@@ -70,4 +56,4 @@ class BossInfo extends React.Component{
   }
 }
 
-export default BossInfo
+export default GeniusInfo
