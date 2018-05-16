@@ -3,13 +3,14 @@ import axios from 'axios'
 const USER_LIST = 'USER_LIST'
 
 const initState = {
-  userlist: []
+  userlist: [],
+  scrollState: false
 }
 
 export function chartuser (state=initState, action) {
   switch(action.type) {
     case USER_LIST:
-      return {...state, userlist:action.payload}
+      return {...state, userlist:action.payload, scrollState:true}
     default:
       return state
   }

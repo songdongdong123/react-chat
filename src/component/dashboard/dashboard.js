@@ -50,19 +50,20 @@ class Dashboard extends React.Component{
         component: User
       }
     ]
-    return (
-      <div>
-        <NavBar mode="dard">{navList.find(v=>v.path===pathname).title}</NavBar>
+    const page = navList.find(v=>v.path===pathname)
+    return page ? (
         <div>
-						<Switch>
-							{navList.map(v=>(
-								<Route key={v.path} path={v.path} component={v.component}></Route>
-							))}
-						</Switch>
-				</div>
-        <NavLink data={navList}></NavLink>
-      </div>
-    )
+          <NavBar mode="dard">{navList.find(v=>v.path===pathname).title}</NavBar>
+          <div>
+              <Switch>
+                {navList.map(v=>(
+                  <Route key={v.path} path={v.path} component={v.component}></Route>
+                ))}
+              </Switch>
+          </div>
+          <NavLink data={navList}></NavLink>
+        </div>
+    ):null
   }
 }
 

@@ -33,6 +33,7 @@ class Login extends React.Component{
     })
   }
   handleLogin () {
+    // console.log(0)
     this.props.login(this.state)
   }
   render () {

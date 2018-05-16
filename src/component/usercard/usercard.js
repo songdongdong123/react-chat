@@ -9,7 +9,7 @@ class UserCard extends React.Component{
     const Footer = Card.Footer
     const userlist = this.props.userlist
     return (
-      <div>
+      <div className="usercard">
         <WingBlank>
           <WhiteSpace></WhiteSpace>
           {userlist.map((v)=>(

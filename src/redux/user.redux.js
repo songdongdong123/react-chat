@@ -1,8 +1,6 @@
 import axios from 'axios'
 import { getRedirectPath } from '../util'
 // 定义action type
-// const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
-// const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 const AUTH_SUCCESS = 'AUTH_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
 const LOAD_DATA = 'LOAD_DATA'
