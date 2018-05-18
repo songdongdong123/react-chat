@@ -1,8 +1,12 @@
 import React from 'react'
 import {Card, WhiteSpace,WingBlank} from 'antd-mobile'
 import './usercard.css'
+import propTypes from 'prop-types'
 
 class UserCard extends React.Component{
+  static propTypes = {
+    userlist: propTypes.array.isRequired
+  }
   render () {
     const Header = Card.Header
     const Body = Card.Body
