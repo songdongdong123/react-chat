@@ -6,6 +6,47 @@ import { login } from '../../redux/user.redux'
 import './login.css'
 import Logo from '../../component/logo/logo'
 
+// function hello () {
+//   console.log('hello ethan I love React')
+// }
+
+// function WrapperHello (fn) {
+//   return function () {
+//     console.log('befor say hello')
+//     fn()
+//     console.log('after say hello')
+//   }
+// }
+// // hello 被重新装饰了
+// // 我们把这种模式叫做装饰器模式
+// hello = WrapperHello(hello)
+// hello()
+
+function WrapperHello(Com) {
+  class WrapComp extends React.Component{
+    render () {
+      return (
+        <div>
+          <p>这是HOC高级组件中特有的属性</p>
+          <Com {...this.props}></Com>
+        </div>
+      )
+    }
+  }
+  return WrapComp
+}
+
+@WrapperHello
+class Hello extends React.Component{
+  render () {
+    return (
+      <div>
+        <h1>hello ethan</h1>
+      </div>
+    )
+  }
+}
+
 @connect(
   state => state.user,
   {login}
@@ -39,10 +80,10 @@ class Login extends React.Component{
   render () {
     return (
       <div>
+        <Hello></Hello>
         <Logo></Logo>
-        <p>{this.props.redirecTo}</p>
         {/* 在这里使用 this.props.redirecTo获取登录后要跳转的路由地址*/}
-        {this.props.redirecTo?<Redirect to={this.props.redirecTo}></Redirect>:null}
+        {this.props.redirecTo && this.props.redirecTo !== '/login'?<Redirect to={this.props.redirecTo}></Redirect>:null}
         <WingBlank>
           <List>
             <p className="errortoast">{this.props.msg?this.props.msg:null}</p>

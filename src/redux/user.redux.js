@@ -4,6 +4,7 @@ import { getRedirectPath } from '../util'
 const AUTH_SUCCESS = 'AUTH_SUCCESS'
 const ERROR_MSG = 'ERROR_MSG'
 const LOAD_DATA = 'LOAD_DATA'
+const LOGOUT = 'LOGOUT'
 // 初始化state
 const initState = {
   // 增加一个跳转地址的属性
@@ -28,6 +29,8 @@ export function user (state = initState, action) {
       return {...state, ...action.payload}
     case ERROR_MSG:
       return {...state, isAuth: false, msg: action.msg}
+    case LOGOUT:
+      return {...initState, redirecTo: '/login'}
     default:
       return state
   }
@@ -51,6 +54,11 @@ function authSuccess(obj){
 // action
 export function loadData (userinfo) {
   return {type: LOAD_DATA, payload: userinfo}
+}
+
+// 退出登录更改state
+export function logoutSubmit () {
+  return {type: LOGOUT}
 }
 
 // 登录

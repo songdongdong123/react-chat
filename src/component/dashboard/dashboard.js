@@ -54,8 +54,8 @@ class Dashboard extends React.Component{
     const page = navList.find(v=>v.path===pathname)
     return page ? (
         <div>
-          <NavBar mode="dard">{navList.find(v=>v.path===pathname).title}</NavBar>
-          <div>
+          <NavBar className="fixd-header">{navList.find(v=>v.path===pathname).title}</NavBar>
+          <div className='dashboard-content'>
               <Switch>
                 {navList.map(v=>(
                   <Route key={v.path} path={v.path} component={v.component}></Route>
