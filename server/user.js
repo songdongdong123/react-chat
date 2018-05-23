@@ -27,7 +27,7 @@ Router.get('/info', function(req, res) {
 })
 // 您可以将中间件和HTTP方法路由(例如get、put、post等等)添加到路由器，就像应用程序一样。
 Router.get('/list', function(req, res) {
-  // User.remove({},function(){})
+  User.remove({},function(){})
   User.find({}, function(err, doc) {
     if (!err) {
       return res.json(doc)

@@ -24,16 +24,8 @@ class Boss extends React.Component{
       <div className="testContainer">
       {/* this.props.scrollState为rtue时通知scroll刷新滚动高度 */}
       {/* this.props.scrollState为redux中管理的状态 */}
-        <Scroll refresh={this.props.scrollState}>
+        <Scroll refresh={this.props.scrollState} className="bosslist">
             <UserCard userlist={this.props.userlist}></UserCard>
-          {/* <div className="container"> 
-              {this.state.test.map((v) =>(
-                <div key={v} className="p1">
-                  <p>123</p>
-                  <p>456</p>
-                </div>
-              ))}
-           </div>  */}
         </Scroll>
       </div>
     )
