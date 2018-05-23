@@ -4,30 +4,35 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { regisger } from '../../redux/user.redux'
 import Logo from '../../component/logo/logo'
+import FormComp from '../../component/form/form'
 import './register.css'
 
 @connect(
   state => state.user,
   {regisger}
 )
+@FormComp
 class Register extends React.Component{
   constructor (props) {
     super(props)
-    this.state = {
-      user: '',
-      pwd: '',
-      repeatpwd: '',
-      type: 'genius'
-    }
+    // this.state = {
+    //   user: '',
+    //   pwd: '',
+    //   repeatpwd: '',
+    //   type: 'genius'
+    // }
     this.handleResgister = this.handleResgister.bind(this)
   }
-  handleChange (key, val) {
-    this.setState({
-      [key]: val
-    })
+  componentDidMount () {
+    this.props.handelChange('type', 'genius')
   }
+  // handleChange (key, val) {
+  //   this.setState({
+  //     [key]: val
+  //   })
+  // }
   handleResgister () {
-    this.props.regisger(this.state)
+    this.props.regisger(this.props.state)
     // this.props.regisger(this.state)这是一个异步操作，所以我们在handleResgister()
     // 是获取不到this.props.redirecTo的值得，所以不能在这里跳转路由
   }
@@ -42,24 +47,24 @@ class Register extends React.Component{
           <WingBlank>
             <List>
               <InputItem
-                onChange={v=>this.handleChange('user', v)}
+                onChange={v=>this.props.handelChange('user', v)}
               >用户名</InputItem>
               <InputItem
                 type="password"
-                onChange={v=>this.handleChange('pwd', v)}
+                onChange={v=>this.props.handelChange('pwd', v)}
               >密码</InputItem>
               <InputItem
                 type="password"
-                onChange={v=>this.handleChange('repeatpwd', v)}
+                onChange={v=>this.props.handelChange('repeatpwd', v)}
               >确认密码</InputItem>
               <RadioItem
-                onChange={()=>this.handleChange('type', 'genius')} 
-                checked={this.state.type==='genius'}>
+                onChange={()=>this.props.handelChange('type', 'genius')} 
+                checked={this.props.state.type==='genius'}>
                 员工
               </RadioItem>
               <RadioItem 
-                onChange={()=>this.handleChange('type', 'boss')}
-                checked={this.state.type==='boss'}>
+                onChange={()=>this.props.handelChange('type', 'boss')}
+                checked={this.props.state.type==='boss'}>
                 老板
               </RadioItem>
             </List>

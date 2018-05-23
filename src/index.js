@@ -35,6 +35,7 @@ ReactDom.render((
           <Route path="/bossinfo" component={BossInfo}></Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/register" component={Register}></Route>
+          <Route path="/chart:user"></Route>
           <Route component={Dashboard}></Route>
           {/* <Redirect to="/login"></Redirect> */}
         </Switch>
