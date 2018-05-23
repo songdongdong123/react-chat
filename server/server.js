@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 // 直白的说use就是给你的当前路径的请求加上中间件，
 // 假如这个路径的参数没有传，默认的就是"/"，也就是说所有的请求都会走这个中间件处理。
 app.use('/user', userRouter)
-app.use('/test', testRouter)
+// app.use('/test', testRouter)
 
 
 

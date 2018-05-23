@@ -42,7 +42,7 @@ class Register extends React.Component{
       <div>
         <Logo></Logo>
         {/* 在这里使用 this.props.redirecTo获取注册后要跳转的路由地址*/}
-        {this.props.redirecTo?<Redirect to={this.props.redirecTo}></Redirect>:null}
+        {this.props.redirecTo&&this.props.redirecTo!=='/login'?<Redirect to={this.props.redirecTo}></Redirect>:null}
         <p className="errortoast">{this.props.msg?this.props.msg:null}</p>
           <WingBlank>
             <List>

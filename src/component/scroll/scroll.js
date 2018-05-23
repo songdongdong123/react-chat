@@ -9,7 +9,6 @@ class Scroll extends React.Component {
     // 完成渲染新的props或者state后调用，此时可以访问到新的DOM元素
 		//组件更新后，如果实例化了better-scroll并且需要刷新就调用refresh()函数
 		if (this.bScroll && this.props.refresh === true) {
-      console.log(this.bScroll)
 			this.bScroll.refresh()
 		}
 	}
@@ -55,7 +54,7 @@ class Scroll extends React.Component {
 Scroll.defaultProps = {
 	direction: "vertical",
 	click: true,
-	refresh: false,
+	refresh: true,
 	onScroll: null
 };
 

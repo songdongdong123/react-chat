@@ -3,6 +3,15 @@ body {
 	padding: 0;
 	font-family: sans-serif;
 }
+.am-tab-bar{
+  position: fixed;
+  width: 100%;
+	bottom: 0;
+	z-index:1000;
+}
+.am-card-header-content img{
+  width:40px;
+}
 
 .error-msg {
 	color: #f50;

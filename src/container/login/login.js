@@ -77,6 +77,7 @@ class Login extends React.Component{
   register () {
     // 因为login是一个路由组件，所有this.props里面含有所有跟路由相关的操作
     // 所以这里我们就可以使用this.props.history.push来进行路由的跳转
+    // console.log(0)
     this.props.history.push('/register')
     // this.props.regisger(this.state)这是一个异步操作，所以我们在handleResgister()
     // 是获取不到this.props.redirecTo的值得，所以不能在这里跳转路由
@@ -87,7 +88,7 @@ class Login extends React.Component{
   //   })
   // }
   handleLogin () {
-    // console.log(0)
+    console.log(0)
     this.props.login(this.props.state)
   }
   render () {
