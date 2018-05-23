@@ -1,5 +1,5 @@
 #react-app
- A react project
+A react project
 #克隆项目
 git clone https://github.com/songdongdong123/react-app.git
 #新建并且换到本地dev分支
