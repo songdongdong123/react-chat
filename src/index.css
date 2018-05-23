@@ -68,3 +68,8 @@ body {
 .dashboard-content .am-card-header-extra {
 	font-size: 14px;
 }
+.stick-footer{
+	position: fixed;
+	bottom:0;
+	width:100%;
+}
