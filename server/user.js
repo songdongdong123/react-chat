@@ -30,18 +30,19 @@ Router.get('/info', function(req, res) {
 })
 // 您可以将中间件和HTTP方法路由(例如get、put、post等等)添加到路由器，就像应用程序一样。
 Router.get('/list', function(req, res) {
-  // User.remove({},function(){})
-  User.find({}, function(err, doc) {
-    if (!err) {
-      return res.json(doc)
-    }
-  })
+  User.remove({},function(){})
+  // User.find({}, function(err, doc) {
+  //   if (!err) {
+  //     return res.json(doc)
+  //   }
+  // })
 })
 
 
 Router.get('/getmsglist', function (req, res) {
   const user = req.cookies.user
   // {'$or': [{from: user, to: user}]}
+  // Chat.remove({},function(){})
   Chat.find({}, function (err, doc) {
     if (!err) {
       return res.json({code: 0, msgs: doc})

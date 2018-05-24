@@ -3,7 +3,10 @@ const express = require('express')
 // body-parser是非常常用的一个express中间件，作用是对post请求的请求体进行解析。
 const bodyParser = require('body-parser')
 const app = express()
-
+// 引入数据模型库
+const model = require('./model')
+// 引入数据模型
+const Chat = model.getModel('chat') 
 // socket.io work with express
 const server = require('http').Server(app)
 
@@ -12,7 +15,13 @@ const io = require('socket.io')(server)
 io.on('connection', function(socket) {
   // console.log('user login')
   socket.on('sendmsg', function (data) {
-    io.emit('recvemsg', data)
+    console.log(data)
+    const {form, to, msg} = data
+    const chatid = [form,to].sort().join('_')
+    Chat.create({chatid, form, to, content: msg}, function (err, doc) {
+      console.log(doc._doc)
+      io.emit('recvemsg', Object.assign({}, doc._doc))
+    })
   })
 })
 
