@@ -6,6 +6,9 @@ const Router = express.Router()
 const model = require('./model')
 // 获取数据模型库中具体数据模型
 const User = model.getModel('user')
+// 获取数据模型中Char模型
+const Chat = model.getModel('chat') 
+
 // 过滤条件
 const _filter = {'pwd':0,'__v':0}
 
@@ -27,13 +30,26 @@ Router.get('/info', function(req, res) {
 })
 // 您可以将中间件和HTTP方法路由(例如get、put、post等等)添加到路由器，就像应用程序一样。
 Router.get('/list', function(req, res) {
-  User.remove({},function(){})
+  // User.remove({},function(){})
   User.find({}, function(err, doc) {
     if (!err) {
       return res.json(doc)
     }
   })
 })
+
+
+Router.get('/getmsglist', function (req, res) {
+  const user = req.cookies.user
+  // {'$or': [{from: user, to: user}]}
+  Chat.find({}, function (err, doc) {
+    if (!err) {
+      return res.json({code: 0, msgs: doc})
+    }
+  })
+})
+
+
 Router.post('/register', function(req, res) {
   // console.log(req.body)
   // 获取前端传递给我们的的数据
