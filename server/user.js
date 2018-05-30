@@ -40,14 +40,24 @@ Router.get('/list', function(req, res) {
 
 
 Router.get('/getmsglist', function (req, res) {
-  const user = req.cookies.user
-  // {'$or': [{from: user, to: user}]}
+  const user = req.cookies.userid
   // Chat.remove({},function(){})
-  Chat.find({}, function (err, doc) {
-    if (!err) {
-      return res.json({code: 0, msgs: doc})
-    }
+  User.find({}, function(e, userdoc) {
+    let users = {}
+    userdoc.forEach(v => {
+      users[v._id] = {name: v.user, avatar: v.avatar}
+    })
+    Chat.find({'$or':[{form:user},{to:user}]}, function (err, doc) {
+      if (!err) {
+        return res.json({code: 0, msgs: doc, users:users})
+      }
+    })
   })
+  // Chat.find({}, function (err, doc) {
+  //   if (!err) {
+  //     return res.json({code: 0, msgs: doc})
+  //   }
+  // })
 })
 
 
