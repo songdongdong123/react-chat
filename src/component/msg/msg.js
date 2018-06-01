@@ -21,7 +21,11 @@ class Msg extends React.Component {
       msgGroup[v.chatid] = msgGroup[v.chatid] || []
       msgGroup[v.chatid].push(v)
     });
-    const chatList = Object.values(msgGroup)
+    const chatList = Object.values(msgGroup).sort((a,b) => {
+      const a_last = this.getLastChat(a).create_time
+      const b_last = this.getLastChat(b).create_time
+      return b_last - a_last
+    })
     return (
       <div>
         <List>
@@ -37,6 +41,10 @@ class Msg extends React.Component {
                 key={lastItem._id}
                 extra={<Badge text={unreadNum}></Badge>}
                 thumb={require(`../images/${userInfo[targetId].avatar}.png`)}
+                arrow="horizontal"
+                onClick={() => {
+                  this.props.history.push(`/chat/${targetId}`)
+                }}
               >
                 {lastItem.content}
                 <Brief>{userInfo[targetId].name}</Brief>

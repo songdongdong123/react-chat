@@ -17,7 +17,6 @@ const models = {
     'desc': {'type': String},
     // 职位名
     'title': {'type': String},
-    // 如果是boos，还有两个字段
     'company': {'type': String},
     'money': {'type': String}
   },
@@ -27,10 +26,10 @@ const models = {
     'to': {'type': String, require: true},
     'read': {'type': Boolean, default: false},
     'content': {'type': String, require: true, default: ''},
-    'create_time': {'type': Number, default: new Date().getTime()}
+    'create_time': { type: Number, default: Date.now }
   }
 }
-
+// new Date().getTime()
 for (let m in models) {
   // 遍历models，根据key，来批量生成不同的数据模型
   mongoose.model(m, new mongoose.Schema(models[m]))
