@@ -22,7 +22,9 @@ class Chat extends React.Component{
     const form = this.props.user._id
     const to = this.props.match.params.user
     const msg = this.state.text
-    this.props.sendMsg({form, to, msg})
+    if (this.state.text) {
+      this.props.sendMsg({form, to, msg})
+    }
     this.setState({text: ''})
   }
   componentDidMount(){
@@ -115,7 +117,9 @@ class Chat extends React.Component{
             isCarousel={true}
             hasLine={false}
             onClick={(el) => {
-              console.log(el)
+              this.setState({
+                text: this.state.text + el.text
+              })
             }}
           />:null}
         </div>
