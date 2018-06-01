@@ -80,3 +80,6 @@ body {
 .am-list-body::after{
 	display:none !important;
 }
+.am-list-body{
+	border: none;
+}
