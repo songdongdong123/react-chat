@@ -74,3 +74,9 @@ body {
 	bottom:0;
 	width:100%;
 }
+.am-list-body::before{
+	display:none !important;
+}
+.am-list-body::after{
+	display:none !important;
+}
