@@ -7,7 +7,7 @@ const MSG_LIST = 'MSG_LIST'
 // 获取信息
 const MSG_RECV = 'MSG_RECV'
 // 标识已读
-// const MSG_READ = 'MSG_READ'
+const MSG_READ = 'MSG_READ'
 
 const initState = {
   chatmsg: [],
@@ -37,6 +37,21 @@ function msglist (msgs, users, userid) {
 function msgRecv (data, userid) {
   // console.log(data)
   return {type: MSG_RECV, payload: data, userid}
+}
+
+function msgRead ({form, userid, num}) {
+  return {type: MSG_READ, payload:{form, userid, num}}
+}
+
+export function readMsg(form) {
+  return (dispatch, getState) => {
+    axios.post('/user/readmsg',{form}).then(res => {
+      const userid = getState().user._id
+      if(res.state === 200 && res.data.code === 0) {
+        dispatch(msgRead(userid, form, res.data.num))
+      }
+    })
+  }
 }
 
 export function recvMsg () {
