@@ -38,6 +38,24 @@ Router.get('/list', function(req, res) {
   // })
 })
 
+// readmsg
+Router.post('/readmsg', function(req, res) {
+  const userid = req.cookies.userid
+  const {form} = req.body
+  // console.log(userid, form)
+  Chat.update(
+    {form, to:userid},
+    {'$set':{read: true}},
+    {multi: true},
+    function(err, doc){
+    console.log(doc)
+    if (!err) {
+      return res.json({code: 0, num: doc.nModified})
+    }
+    return res.json({code:1, msg: '修改失败'})
+  })
+})
+
 
 Router.get('/getmsglist', function (req, res) {
   const user = req.cookies.userid
