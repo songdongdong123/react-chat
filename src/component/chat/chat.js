@@ -38,8 +38,6 @@ class Chat extends React.Component{
     //     msg: [...this.state.msg, data.text]
     //   })
     // })
-    const to = this.props.match.params.user
-    this.props.readMsg(to)
     // console.log(this.props.match.params.user)
   }
   fixCarousel () {
@@ -47,6 +45,11 @@ class Chat extends React.Component{
       // 手动派发resize事件
       window.dispatchEvent(new Event('resize'))
     },0)
+  }
+  componentWillUnmount () {
+    // 组件移除时触发的生命周期函数
+    const to = this.props.match.params.user
+    this.props.readMsg(to)
   }
   render () {
     const userid = this.props.match.params.user
