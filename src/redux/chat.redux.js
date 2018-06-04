@@ -24,10 +24,13 @@ export function chat (state = initState, action) {
     const n = action.payload.to === action.userid?1:0
       return {...state, chatmsg: [...state.chatmsg, action.payload], unread:state.unread+n}
     case MSG_READ:
-      return {...state, chatmsg:state.chatmsg.map(v=>{
-        v.read = true
-        return v
-      }), unread:state.unread-action.payload.num}
+      // return {...state, chatmsg:state.chatmsg.map(v=>{
+      //   v.read = true
+      //   return v
+      // }), unread:state.unread-action.payload.num}
+      // 优化后的写法
+      const {form, num} = action.payload
+      return {...state, chatmsg:state.chatmsg.map(v=>({...v,read:form===v.form?true:v.read})), unread:state.unread - num}
     default:
       return state 
   }
