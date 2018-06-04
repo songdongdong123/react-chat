@@ -105,6 +105,7 @@ class Login extends React.Component{
               onChange = {v => this.props.handelChange('user', v)}
             >用户</InputItem>
             <InputItem
+              type="password"
               onChange = {v => this.props.handelChange('pwd', v)}
             >密码</InputItem>
           </List>
