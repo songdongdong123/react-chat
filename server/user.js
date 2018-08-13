@@ -59,7 +59,6 @@ Router.post('/readmsg', function(req, res) {
 
 Router.get('/getmsglist', function (req, res) {
   const user = req.cookies.userid
-  // Chat.remove({},function(){})
   User.find({}, function(e, userdoc) {
     let users = {}
     userdoc.forEach(v => {

@@ -48,7 +48,7 @@ class Chat extends React.Component{
   }
   componentWillUnmount () {
     // 组件移除时触发的生命周期函数
-    const to = this.props.match.params.user
+    const to = this.props.match.params.user 
     this.props.readMsg(to)
   }
   render () {
