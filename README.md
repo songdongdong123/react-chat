@@ -1,37 +1,42 @@
-#react-app<br>
+<!--
+ * @LastEditors: Ethan
+ * @Date: 2018-08-13 16:22:16
+ * @LastEditTime: 2019-04-10 14:28:18
+ -->
+# react-app<br>
 ```
 A react project
 ```
-#克隆项目<br>
+# 克隆项目<br>
 ```
 git clone https://github.com/songdongdong123/react-app.git
 ```
-#新建并且换到本地dev分支<br>
+# 新建并且换到本地dev分支<br>
 ```
 git checkout -b dev
 ```
-#更新代码<br>
+# 更新代码<br>
 ```
 git pull origin dev
 ```
-#安装依赖<br>
+# 安装依赖<br>
 ```
 cnpm install
 ```
-#安装MongoDB<br>
-#进入安装根目录启动启动MongoDB<br>
+# 安装MongoDB<br>
+# 进入安装根目录启动启动MongoDB<br>
 ```
 mongod
 ```
-#安装nodemon<br>
+# 安装nodemon<br>
 ```
 npm install nondmon -g
 ```
-#进入server目录下<br>
+# 进入server目录下<br>
 ```
 nodemon server.js
 ```
-#启动项目<br>
+# 启动项目<br>
 ```
 npm start
 ```
